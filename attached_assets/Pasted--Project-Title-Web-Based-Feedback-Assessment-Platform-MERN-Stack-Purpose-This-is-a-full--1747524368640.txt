@@ -1,0 +1,168 @@
+🚀 Project Title: Web-Based Feedback & Assessment Platform (MERN Stack)
+
+🎯 Purpose:
+This is a full-stack MERN (MongoDB, Express.js, React, Node.js) web application designed for assessors to provide structured, rubric-based feedback for students across multiple schools, classes, and tasks. It streamlines assessment, automates PDF feedback generation, and centralizes result tracking for students and administrators.
+
+👥 User Roles:
+There are 3 main roles, each with secure login and unique dashboards:
+
+🔹 1. Assessor Role
+Login:
+
+Username/password authentication with secure sessions.
+
+School/Class/Task Selection:
+
+Dropdown or search fields to select:
+
+School (pre-assigned by admin)
+
+Class (e.g., 10A)
+
+Student (from class list)
+
+Task (e.g., "Text Response Essay")
+
+Each task is linked to a specific rubric (5 types).
+
+Rubric Submission:
+
+Each rubric contains criteria scored from 1 (Bad) to 5 (Excellent).
+
+Free-text comment box for additional feedback.
+
+Save & Export:
+
+On submission:
+
+A PDF is auto-generated (e.g., JordanSmith_TaskA.pdf)
+
+Score saved to a MongoDB-backed class record.
+
+Assessor's data color-coded in results table.
+
+Returns assessor to class list for next student.
+
+Class Result Spreadsheet View:
+
+View only the assigned school/class.
+
+Columns: Student | Task | Criteria Scores | Total | Assessor (color-coded)
+
+🔹 2. Student Role
+Login:
+
+Secure login with access only to their records.
+
+Feedback Portfolio:
+
+View all PDF assessments submitted so far.
+
+Auto-thumbnail preview by task name.
+
+Searchable by name or task.
+
+Show message if no feedbacks exist yet.
+
+Results Table:
+
+Only sees their class results.
+
+Columns: Student | Task | Criteria Scores | Total | Assessor (color-coded)
+
+🔹 3. Admin Role
+Login:
+
+Secure admin portal.
+
+Management Features:
+
+Upload CSVs for bulk management of:
+
+Schools, Classes, Students
+
+CRUD for:
+
+Schools, Classes, Students, Assessors
+
+Assign:
+
+Assessors to Tasks, Tasks to Classes
+
+Rubrics to Tasks
+
+Rubric Results Dashboard:
+
+Filter by:
+
+School, Class, Student
+
+View:
+
+Task | Scores | Assessor (color-coded)
+
+Download Center:
+
+Export PDFs (per School, Assessor, Student)
+
+Download full result spreadsheets (CSV, XLSX, PDF)
+
+Analytics Dashboard:
+
+Graphs & tables for:
+
+Activity by Date, Task, School
+
+Task & Rubric Config:
+
+Define and manage 5 rubric templates.
+
+Assign rubrics to tasks per school/class.
+
+User Access Management:
+
+ID | Role | Permissions | Reset Passwords
+
+🗂 Folder/File Suggestions:
+/client: React frontend
+
+/server: Node.js backend API
+
+/pdfs: Auto-generated feedback files
+
+/uploads: CSV imports and school archives
+
+/configs: Rubric templates
+
+/scripts: Admin import/export tools
+
+📦 Key Stack:
+Frontend: React, TailwindCSS (for UI), React Router, Axios
+
+Backend: Express.js, JWT, Multer (CSV handling), pdf-lib or Puppeteer (PDF generation)
+
+Database: MongoDB with Mongoose
+
+Auth: JWT-based session management
+
+File Storage: Local (or AWS S3/Cloudinary for production)
+
+✅ Replit Optimization Tips:
+Use the monorepo template (client + server in one Replit workspace).
+
+Install dependencies in package.json for both React and Express.
+
+Use environment variables via .env for MongoDB URI, JWT secrets, etc.
+
+Configure Replit's "Run" button to use concurrently:
+
+json
+Copy
+Edit
+"start": "concurrently \"npm run server\" \"npm run client\""
+💡 Bonus Features (Optional for MVP):
+Real-time PDF generation preview before saving
+
+Email notifications when feedback is available
+
+Admin audit logs (downloadable)
