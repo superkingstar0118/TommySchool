@@ -1,8 +1,19 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import cors from "cors";
+
+
 
 const app = express();
+
+const corsOptions = {
+  origin: [ "http://localhost:5173", "https://TommySchool.onrender.com" ],
+  credentials: true,  // if you use cookies/auth tokens
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
